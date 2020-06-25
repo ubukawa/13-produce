@@ -65,9 +65,9 @@ let moduleKeysInProgress = []
 //  if (Number.isNaN(wtps)) return
 //  idle = wtps < wtpsThreshold
 //})
-//const isIdle = () => {
-//  return idle
-//}
+const isIdle = () => {
+  return idle
+}
 
 ////This checkExpiretiles needs to be confirmed
 //const checkExpiretiles = (date) => {
@@ -125,7 +125,7 @@ const getScores = async () => {
     for (let date = oldestDate; date < now; date.setDate(date.getDate() + 1)) {
       const spinner = new Spinner(`scoring modules by ${date.toISOString().split('T')[0]}`)
       spinner.start()
-      await checkExpiretiles(date)
+//      await checkExpiretiles(date)
       spinner.stop()
       process.stdout.write('\n')
     }
@@ -316,7 +316,7 @@ const queueTasks = () => {
 const shutdown = () => {
   winston.info(`${iso()}: production system shutdown.`)
   console.log('** production system shutdown! **')
-  sar.kill()
+//  sar.kill()
 }
 
 const main = async () => {
