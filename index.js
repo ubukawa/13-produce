@@ -213,7 +213,7 @@ DECLARE cur CURSOR FOR
 SELECT 
   ${cols.toString()}
 FROM ${table}
-WHERE ST_Transform(${table}.geom, 4326) && ST_MakeEnvelope(${bbox.join(', ')}, 4326)
+WHERE ST_Transform(${table}.geom,4326) && ST_MakeEnvelope(${bbox.join(', ')},4326)
 ` 
       cols = await client.query(sql)
       try {
