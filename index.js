@@ -210,12 +210,10 @@ SELECT column_name FROM information_schema.columns
       await client.query(`BEGIN`)
       sql = `
 DECLARE cur CURSOR FOR 
-WITH
-  envelope AS (SELECT ST_MakeEnvelope(${bbox.join(', ')}, 4326) AS geom)
 SELECT 
   ${cols.toString()}
 FROM ${table}
-JOIN envelope ON ST_Transform(${table}.geom, 4326) && envelope.geom
+WHERE ST_Transform(${table}.geom, 4326) && ST_MakeEnvelope(${bbox.join(', ')}, 4326)
 ` 
       cols = await client.query(sql)
       try {
