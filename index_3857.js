@@ -11,7 +11,6 @@ const { Pool, Query } = require('pg')
 const Spinner = require('cli-spinner').Spinner
 const winston = require('winston')
 const DailyRotateFile = require('winston-daily-rotate-file')
-const turf = require('@turf/turf')
 
 const modify = require('./modify.js')
 

@@ -11,7 +11,6 @@ const { Pool, Query } = require('pg')
 const Spinner = require('cli-spinner').Spinner
 const winston = require('winston')
 const DailyRotateFile = require('winston-daily-rotate-file')
-const turf = require('@turf/turf')
 
 const modify = require('./modify.js')
 
@@ -38,7 +37,7 @@ winston.configure({
   format: winston.format.simple(),
   transports: [ 
     new DailyRotateFile({
-      filename: '12-produce-%DATE%.log',
+      filename: '11-produce-%DATE%.log',
       datePattern: 'YYYY-MM-DD',
       maxSize: '20m',
       maxFiles: '14d'
@@ -55,10 +54,8 @@ let pools = {}
 let productionSpinner = new Spinner()
 let moduleKeysInProgress = []
 
-//// start the monitor //(note: edited here)
-//sar = spawn('ssh', [
-//  '-l', unixUser,
-//  host, `sar -b ${monitorPeriod}`
+// start the monitor //(note: edited here)
+//sar = spawn( 'sar', [ `-b ${monitorPeriod}`
 //], { stdio: ['inherit', 'pipe', 'pipe'] })
 //byline(sar.stdout).on('data', line => {
 //  wtps =
@@ -70,13 +67,10 @@ const isIdle = () => {
   return idle
 }
 
-////This checkExpiretiles needs to be confirmed
 //const checkExpiretiles = (date) => {
 //  return new Promise((resolve, reject) => {
 //    const dateKey = date.toISOString().split('T')[0].replace(/-/g, '')
-//    const cat = spawn('ssh', [
-//      '-l', unixUser,
-//      host, `cat /osm_base/expiretiles/${dateKey}/` + '*'
+//    const cat = spawn( 'ssh', [`cat /osm_base/expiretiles/${dateKey}/` + '*'
 //    ], { stdio: ['inherit', 'pipe', 'ignore'] })
 //    byline(cat.stdout).on('data', line => {
 //      let zxy = line.toString().split('/').map(v => Number(v))
@@ -100,7 +94,7 @@ const getScores = async () => {
     for (let x = 0; x < 2 ** Z; x++) {
       for (let y = 0; y < 2 ** Z; y++) {
         const moduleKey = `${Z}-${x}-${y}`
-        const path = `${mbtilesDir}/${moduleKey}.mbtiles`
+       const path = `${mbtilesDir}/${moduleKey}.mbtiles`
         let mtime = defaultDate
         let size = 0
         if (fs.existsSync(path)) {
@@ -211,8 +205,8 @@ SELECT column_name FROM information_schema.columns
       await client.query(`BEGIN`)
       sql = `
 DECLARE cur CURSOR FOR 
-WITH 
-  envelope AS (SELECT ST_Transform(ST_MakeEnvelope(${bbox.join(', ')}, 4326), 3857) AS geom)
+WITH
+  envelope AS (SELECT ST_MakeEnvelope(${bbox.join(', ')}, 4326) AS geom)
 SELECT 
   ${cols.toString()}
 FROM ${table}
@@ -305,7 +299,7 @@ const queue = new Queue(async (t, cb) => {
 const queueTasks = () => {
   let moduleKeys = Object.keys(modules)
   moduleKeys.sort((a, b) => modules[b].score - modules[a].score)
-//  for (let moduleKey of moduleKeys) {
+  //for (let moduleKey of moduleKeys) {
   for (let moduleKey of ['6-37-31', '6-38-31', '6-37-32', '6-38-32']) { //// TEMP
     //if (modules[moduleKey].score > 0) {
       queue.push({
