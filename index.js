@@ -12,7 +12,8 @@ const Spinner = require('cli-spinner').Spinner
 const winston = require('winston')
 const DailyRotateFile = require('winston-daily-rotate-file')
 const turf = require('@turf/turf')
-
+const turf = require('@turf/turf')
+const projection = require('@turf/projection')
 const modify = require('./modify.js')
 
 // config constants
@@ -38,7 +39,7 @@ winston.configure({
   format: winston.format.simple(),
   transports: [ 
     new DailyRotateFile({
-      filename: '12-produce-%DATE%.log',
+      filename: '13-produce-%DATE%.log',
       datePattern: 'YYYY-MM-DD',
       maxSize: '20m',
       maxFiles: '14d'
@@ -209,10 +210,19 @@ SELECT column_name FROM information_schema.columns
       // ST_AsGeoJSON(ST_Intersection(ST_MakeValid(${table}.geom), envelope.geom))
       cols.push(`ST_AsGeoJSON(${table}.geom)`)
       await client.query(`BEGIN`)
+
+//for EPSG5857 only
+    let minpt = new Array(bbox[0], bbox[1])
+    let tminpt = turf.point(minpt)
+    let mminpt = projection.toMercator(tminpt)
+    let maxpt = new Array(bbox[2], bbox[3])
+    let tmaxpt = turf.point(maxpt)
+    let mmaxpt = projection.toMercator(tmaxpt)
+    let mbbox = new Array(mminpt.geometry.coordinates[0],mmaxpt.geometry.coordinates[0],mminpt.geometry.coordinates[1],mmaxpt.geometry.coordinates[1],3857)
       sql = `
 DECLARE cur CURSOR FOR 
 WITH 
-  envelope AS (SELECT ST_Transform(ST_MakeEnvelope(${bbox.join(', ')}, 4326), 3857) AS geom)
+  envelope AS (SELECT ST_MakeEnvelope(${mbbox.join(', ')}) AS geom)
 SELECT 
   ${cols.toString()}
 FROM ${table}
@@ -265,6 +275,7 @@ const queue = new Queue(async (t, cb) => {
     '--base-zoom=15',
     '--hilbert',
     `--clip-bounding-box=${bbox.join(',')}`,
+    '--projection=EPSG:3857',
     `--output=${tmpPath}`
   ], { stdio: ['pipe', 'inherit', 'inherit'] })
   tippecanoe.on('exit', () => {
