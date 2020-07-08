@@ -121,9 +121,17 @@ const lut = {
   // 1. nature
   un_mission_lc_ls: f => {
     f.tippecanoe = {
-      layer: 'nature',
-      minzoom: 11,
+      layer: 'landuse',
+      minzoom: 9,
       maxzoom: 15
+    }
+    return f
+  },
+  un_glc30_global_lc_ms: f => {
+    f.tippecanoe = {
+      layer: 'landuse',
+      minzoom: 6,
+      maxzoom: 9
     }
     return f
   },
@@ -273,50 +281,50 @@ const lut = {
     return f
   },
   // 3. boundary
-  unhq_bndl25: f => {
-    f.tippecanoe = {
-      layer: 'hq_bnd',
-      minzoom: 6,
-      maxzoom: 7
-    }
-    return f
-  },
-  unhq_bndl05: f => {
-    f.tippecanoe = {
-      layer: 'hq_bnd',
-      minzoom: 8,
-      maxzoom: 9
-    }
-    return f
-  },
+//  unhq_bndl25: f => {
+//    f.tippecanoe = {
+//      layer: 'hq_bnd',
+//      minzoom: 6,
+//      maxzoom: 7
+//    }
+//    return f
+//  },
+//  unhq_bndl05: f => {
+//    f.tippecanoe = {
+//      layer: 'hq_bnd',
+//      minzoom: 8,
+//      maxzoom: 9
+//    }
+//    return f
+//  },
   unhq_bndl: f => {
     f.tippecanoe = {
       layer: 'hq_bnd',
-      minzoom: 10,
+      minzoom: 6,
       maxzoom: 15
     }
     return f
   },
-  unhq_bnda05_a1: f => {
-    f.tippecanoe = {
-      layer: 'hq_bnd',
-      minzoom: 6,
-      maxzoom: 7
-    }
-    return f
-  }, 
+//  unhq_bnda05_a1: f => {
+//    f.tippecanoe = {
+//      layer: 'hq_bnd',
+//      minzoom: 6,
+//      maxzoom: 7
+//    }
+//    return f
+//  }, 
  unhq_bnda_a1: f => {
     f.tippecanoe = {
       layer: 'hq_bnd',
-      minzoom: 8,
-      maxzoom: 9
+      minzoom: 6,
+      maxzoom: 8
     }
     return f
   },
   unhq_bnda_a2: f => {
     f.tippecanoe = {
       layer: 'hq_bnd',
-      minzoom: 10,
+      minzoom: 8,
       maxzoom: 15
     }
     return f
@@ -325,14 +333,14 @@ const lut = {
     f.tippecanoe = {
       layer: 'c_bnd',
       minzoom: 6,
-      maxzoom: 9
+      maxzoom: 8
     }
     return f
   },
   custom_unmap_0_bnda_a2: f => {
     f.tippecanoe = {
       layer: 'c_bnd',
-      minzoom: 10,
+      minzoom: 8,
       maxzoom: 15
     }
     return f
@@ -340,31 +348,47 @@ const lut = {
   custom_unmap_0_bndl: f => {
     f.tippecanoe = {
       layer: 'c_bnd',
-      minzoom: 7,
+      minzoom: 6,
       maxzoom: 15
     }
     return f
   },
-  un_unmik_bnda_a2: f => {
-    f.tippecanoe = {
-      layer: 'mik_bnd',
-      minzoom: 8,
-      maxzoom: 9
-    }
-    return f
-  },
+//  un_unmik_bnda_a2: f => {
+//    f.tippecanoe = {
+//      layer: 'mik_bnd',
+//      minzoom: 8,
+//      maxzoom: 9
+//    }
+//    return f
+//  },
   un_unmik_bnda_a3: f => {
     f.tippecanoe = {
       layer: 'mik_bnd',
-      minzoom: 10,
-      maxzoom: 12
+      minzoom: 8,
+      maxzoom: 15
     }
     return f
   },
   un_unmik_bndl: f => {
     f.tippecanoe = {
       layer: 'mik_bnd',
-      minzoom: 9,
+      minzoom: 7,
+      maxzoom: 15
+    }
+    return f
+  },
+  un_unvmc_igac_bnda_a3_rural_units: f => {
+    f.tippecanoe = {
+      layer: 'vmc_bnd',
+      minzoom: 11,
+      maxzoom: 15
+    }
+    return f
+  },
+  un_unvmc_igac_bndl: f => {
+    f.tippecanoe = {
+      layer: 'vmc_bnd',
+      minzoom: 6,
       maxzoom: 15
     }
     return f
@@ -776,8 +800,8 @@ const lut = {
   unhq_popp: f => {
     f.tippecanoe = {
       layer: 'place',
-      minzoom: 5,
-      maxzoom: 12
+      minzoom: 6,
+      maxzoom: 15
     }
     f.properties._source = 'unhq_popp'
     return f
@@ -793,8 +817,8 @@ const lut = {
   },
   unhq_phyp: f => {
     f.tippecanoe = {
-      layer: 'place',
-      minzoom: 7,
+      layer: 'label',
+      minzoom: 6,
       maxzoom: 15
     }
     f.properties._source = 'unhq_phyp'
@@ -802,8 +826,8 @@ const lut = {
   },
   un_minusca_pois: f => {
     f.tippecanoe = {
-      layer: 'place',
-      minzoom: 8,
+      layer: 'poi',
+      minzoom: 6,
       maxzoom: 15
     }
     f.properties._source = 'un_minusca_pois'
@@ -811,8 +835,8 @@ const lut = {
   },
   un_global_pois: f => {
     f.tippecanoe = {
-      layer: 'place',
-      minzoom: 8,
+      layer: 'poi',
+      minzoom: 6,
       maxzoom: 15
     }
     f.properties._source = 'un_global_pois'
