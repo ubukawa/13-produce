@@ -12,7 +12,6 @@ const Spinner = require('cli-spinner').Spinner
 const winston = require('winston')
 const DailyRotateFile = require('winston-daily-rotate-file')
 const turf = require('@turf/turf')
-const turf = require('@turf/turf')
 const projection = require('@turf/projection')
 const modify = require('./modify.js')
 
