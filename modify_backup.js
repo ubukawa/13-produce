@@ -190,23 +190,23 @@ const lut = {
   // 2. water
   custom_planet_ocean_l08: f => {
     f.tippecanoe = {
-      layer: 'hydrography',
+      layer: 'water',
       minzoom: 6,
-      maxzoom: 7
+      maxzoom: 8
     }
     return f
   },
   custom_planet_ocean: f => {
     f.tippecanoe = {
-      layer: 'hydrography',
-      minzoom: 7,
+      layer: 'water',
+      minzoom: 9,
       maxzoom: 15
     } 
     return f
   },
   custom_planet_land_a_l08: f => {
     f.tippecanoe = {
-      layer: 'base',
+      layer: 'land',
       minzoom: 6,
       maxzoom: 8
     }
@@ -214,8 +214,8 @@ const lut = {
   },
   custom_planet_land_a: f => {
     f.tippecanoe = {
-      layer: 'base',
-      minzoom: 8,
+      layer: 'land',
+      minzoom: 9,
       maxzoom: 15
     } 
     return f
@@ -245,9 +245,9 @@ const lut = {
   },
   custom_ne_rivers_lakecentrelines: f => {
     f.tippecanoe = {
-      layer: 'hydrography',
-      minzoom: 6,
-      maxzoom: 7
+      layer: 'water',
+      minzoom: (f.properties.scalerank > 1) ? f.properties.scalerank : 6,
+      maxzoom: 6
     }
     if (f.tippecanoe.minzoom > 6) f.tippecanoe.minzoom = 6
     return f
