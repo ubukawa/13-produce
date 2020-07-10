@@ -455,6 +455,7 @@ const lut = {
         f.properties.railway = f.properties.fclass
         break
       case 'stop_position':
+      case 'pier':
         f.properties.public_transport = f.properties.fclass
         break
       case 'bus_stop':
