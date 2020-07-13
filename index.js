@@ -217,7 +217,7 @@ SELECT column_name FROM information_schema.columns
     let maxpt = new Array(bbox[2], bbox[3])
     let tmaxpt = turf.point(maxpt)
     let mmaxpt = projection.toMercator(tmaxpt)
-    let mbbox = new Array(mminpt.geometry.coordinates[0],mmaxpt.geometry.coordinates[0],mminpt.geometry.coordinates[1],mmaxpt.geometry.coordinates[1],3857)
+    let mbbox = new Array(mminpt.geometry.coordinates[0],mminpt.geometry.coordinates[1],mmaxpt.geometry.coordinates[0],mmaxpt.geometry.coordinates[1],3857)
       sql = `
 DECLARE cur CURSOR FOR 
 WITH 
