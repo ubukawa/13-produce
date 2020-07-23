@@ -24,6 +24,7 @@ const preProcess = (f) => {
       name = f.properties['name']
     }
     delete f.properties['en_name']
+    delete f.properties['ar_name']
     delete f.properties['int_name']
     delete f.properties['name']
     f.properties.name = name
@@ -533,156 +534,156 @@ const lut = {
   },
   // 9. place
   osm_planet_pois_heritage: f => {
-    switch (f.properties.fclass) {
-      case 'theatre':
-      case 'grave_yard':
-        f.properties.amenity = f.properties.fclass
-        break
-      case 'museum':
-        f.properties.tourism = f.properties.fclass
-        break
-      case 'monument':
-      case 'memorial':
-      case 'castle':
-      case 'fort':
-      case 'archaeological_site':
-      case 'ruins':
-      case 'cemetry':
-        f.properties.historic = f.properties.fclass
-        break
-      default:
-        throw new Error(`osm_planet_pois_heritage: ${f.properties.fclass}`)
-    }
-    delete f.properties['fclass']
+//    switch (f.properties.fclass) {
+//      case 'theatre':
+//      case 'grave_yard':
+//        f.properties.amenity = f.properties.fclass
+//        break
+//      case 'museum':
+//        f.properties.tourism = f.properties.fclass
+//        break
+//      case 'monument':
+//      case 'memorial':
+//      case 'castle':
+//      case 'fort':
+//      case 'archaeological_site':
+//      case 'ruins':
+//      case 'cemetry':
+//        f.properties.historic = f.properties.fclass
+//        break
+//      default:
+//        throw new Error(`osm_planet_pois_heritage: ${f.properties.fclass}`)
+//    }
+//    delete f.properties['fclass']
     return osmPoi(f)
   },
   osm_planet_pois_other: f => {
-    switch (f.properties.fclass) {
-      case 'golf_course':
-      case 'water_park':
-      case 'pitch':
-      case 'stadium':
-      case 'sports_centre':
-      case 'swimming_pool':
-      case 'park':
-      case 'playground':
-        f.properties.leisure = f.properties.fclass
-        break
-      case 'zoo':
-      case 'theme_park':
-        f.properties.tourism = f.properties.fclass
-        break
-      case 'tower':
-      case 'water_tower':
-      case 'communications_tower':
-      case 'windmill':
-      case 'lighthouse':
-        f.properties.man_made = f.properties.fclass
-        break
-      case 'car_repair':
-      case 'supermarket':
-      case 'kiosk':
-      case 'department_store':
-      case 'clothes':
-      case 'books':
-      case 'butcher':
-      case 'beverages':
-      case 'alcohol':
-      case 'optician':
-      case 'stationery':
-      case 'mobile_phone':
-      case 'greengrocer':
-      case 'car':
-      case 'furniture':
-      case 'computer':
-      case 'hairdresser':
-      case 'bakery':
-      case 'travel_agency':
-        f.properties.shop = f.properties.fclass
-        break
-      case 'bank':
-      case 'atm':
-      case 'marketplace':
-      case 'car_rental':
-      case 'pharmacy':
-      case 'waste_disposal':
-        f.properties.amenity = f.properties.fclass
-        break
-      case 'swimming':
-      case 'tennis':
-        f.properties.sport = f.properties.fclass
-        break
-      case 'station':
-        f.properties.power = f.properties.fclass
-        break
-      case 'landfill':
-        f.properties.landuse = f.properties.fclass
-        break
-      default:
-        throw new Error(`osm_planet_pois_other: ${f.properties.fclass}`)
-    }
-    delete f.properties['fclass']
+//    switch (f.properties.fclass) {
+//      case 'golf_course':
+//      case 'water_park':
+//      case 'pitch':
+//      case 'stadium':
+//      case 'sports_centre':
+//      case 'swimming_pool':
+//      case 'park':
+//      case 'playground':
+//        f.properties.leisure = f.properties.fclass
+//        break
+//      case 'zoo':
+//      case 'theme_park':
+//        f.properties.tourism = f.properties.fclass
+//        break
+//      case 'tower':
+//      case 'water_tower':
+//      case 'communications_tower':
+//      case 'windmill':
+//      case 'lighthouse':
+//        f.properties.man_made = f.properties.fclass
+//        break
+//      case 'car_repair':
+//      case 'supermarket':
+//      case 'kiosk':
+//      case 'department_store':
+//      case 'clothes':
+//      case 'books':
+//      case 'butcher':
+//      case 'beverages':
+//      case 'alcohol':
+//      case 'optician':
+//      case 'stationery':
+//      case 'mobile_phone':
+//      case 'greengrocer':
+//      case 'car':
+//      case 'furniture':
+//      case 'computer':
+//      case 'hairdresser':
+//      case 'bakery':
+//      case 'travel_agency':
+//        f.properties.shop = f.properties.fclass
+//        break
+//      case 'bank':
+//      case 'atm':
+//      case 'marketplace':
+//      case 'car_rental':
+//      case 'pharmacy':
+//      case 'waste_disposal':
+//        f.properties.amenity = f.properties.fclass
+//        break
+//      case 'swimming':
+//      case 'tennis':
+//        f.properties.sport = f.properties.fclass
+//        break
+//      case 'station':
+//        f.properties.power = f.properties.fclass
+//        break
+//      case 'landfill':
+//        f.properties.landuse = f.properties.fclass
+//        break
+//      default:
+//        throw new Error(`osm_planet_pois_other: ${f.properties.fclass}`)
+//    }
+//    delete f.properties['fclass']
     return osmPoi(f)
   },
   osm_planet_pois_public: f => {
-    switch (f.properties.fclass) {
-      case 'public_building':
-      case 'townhall':
-      case 'embassy':
-      case 'courthouse':
-      case 'police':
-      case 'prison':
-      case 'fire_station':
-      case 'post_office':
-      case 'social_facility':
-      case 'customs':
-        f.properties.amenity = f.properties.fclass
-        break
-      case 'government':
-      case 'ngo':
-        f.properties.office = f.properties.fclass
-        break
-      default:
-        throw new Error(`osm_planet_pois_public: ${f.properties.fclass}`)
-    }
-    delete f.properties['fclass']
+//    switch (f.properties.fclass) {
+//      case 'public_building':
+//      case 'townhall':
+//      case 'embassy':
+//      case 'courthouse':
+//      case 'police':
+//      case 'prison':
+//      case 'fire_station':
+//      case 'post_office':
+//      case 'social_facility':
+//      case 'customs':
+//        f.properties.amenity = f.properties.fclass
+//        break
+//      case 'government':
+//      case 'ngo':
+//        f.properties.office = f.properties.fclass
+//        break
+//      default:
+//        throw new Error(`osm_planet_pois_public: ${f.properties.fclass}`)
+//    }
+//    delete f.properties['fclass']
     return osmPoi(f)
   },
   osm_planet_pois_services: f => {
-    switch (f.properties.fclass) {
-      case 'shelter':
-      case 'school':
-      case 'college':
-      case 'university':
-      case 'hospital':
-      case 'restaurant':
-      case 'fast_food':
-      case 'cafe':
-      case 'food_court':
-      case 'biergarten':
-      case 'nightclub':
-      case 'pub':
-      case 'bar':
-      case 'community_centre':
-      case 'cinema':
-      case 'library':
-      case 'arts_centre':
-      case 'money_transfer':
-      case 'bureau_de_change':
-        f.properties.amenity = f.properties.fclass
-        break
-      case 'bed_and_breakfast':
-      case 'hotel':
-      case 'motel':
-      case 'guest_house':
-      case 'hostel':
-      case 'chalet':
-        f.properties.tourism = f.properties.fclass
-        break
-      default:
-        throw new Error(`osm_planet_pois_services: ${f.properties.fclass}`)
-    }
-    delete f.properties['fclass']
+//    switch (f.properties.fclass) {
+//      case 'shelter':
+//      case 'school':
+//      case 'college':
+//      case 'university':
+//      case 'hospital':
+//      case 'restaurant':
+//      case 'fast_food':
+//      case 'cafe':
+//      case 'food_court':
+//      case 'biergarten':
+//      case 'nightclub':
+//      case 'pub':
+//      case 'bar':
+//      case 'community_centre':
+//      case 'cinema':
+//      case 'library':
+//      case 'arts_centre':
+//      case 'money_transfer':
+//      case 'bureau_de_change':
+//        f.properties.amenity = f.properties.fclass
+//        break
+//      case 'bed_and_breakfast':
+//      case 'hotel':
+//      case 'motel':
+//      case 'guest_house':
+//      case 'hostel':
+//      case 'chalet':
+//        f.properties.tourism = f.properties.fclass
+//        break
+//      default:
+//        throw new Error(`osm_planet_pois_services: ${f.properties.fclass}`)
+//    }
+//    delete f.properties['fclass']
     return osmPoi(f)
   },
   osm_planet_pois_traffic: f => {
