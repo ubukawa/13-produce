@@ -174,8 +174,8 @@ const lut = {
   osm_planet_landuse_natural_medium: f => {
     f.tippecanoe = {
       layer: 'nature',
-      minzoom: 8,
-//      minzoom: flap(f, 15),
+//      minzoom: 8,
+      minzoom: flap(f, 15),
       maxzoom: 15
     }
     switch (f.properties.fclass) {
@@ -196,7 +196,7 @@ const lut = {
     delete f.properties['fclass']
     return f
   },
-  // 2. water
+  // X. other
   custom_planet_ocean_l08: f => {
     f.tippecanoe = {
       layer: 'ocean',
@@ -229,10 +229,11 @@ const lut = {
     } 
     return f
   },
+ // 2. water
   osm_planet_water: f => {
     switch (f.properties.fclass) {
       case 'water':
-      case 'glacier':
+//      case 'glacier': 
       case 'wetland':
         f.properties.natural = f.properties.fclass
         break
