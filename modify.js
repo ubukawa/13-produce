@@ -403,7 +403,7 @@ const lut = {
   osm_planet_railways: f => {
     f.tippecanoe = {
       layer: 'railway',
-      minzoom: 19,
+      minzoom: 9,
       maxzoom: 15
     }
     f.properties.railway = f.properties.fclass
@@ -438,33 +438,7 @@ const lut = {
       minzoom: flap(f, 10),
       maxzoom: 15
     }
-    switch (f.properties.fclass) {
-      case 'airport':
-      case 'bus_station':
-      case 'ferry_terminal':
-        f.properties.amenity = f.properties.fclass
-        break
-      case 'aerodrome':
-      case 'airfield':
-      case 'helipad':
-      case 'aeroway':
-        f.properties.aeroway = f.properties.fclass
-        break
-      case 'station':
-      case 'halt':
-      case 'tram_stop':
-        f.properties.railway = f.properties.fclass
-        break
-      case 'stop_position':
-      case 'pier':
-        f.properties.public_transport = f.properties.fclass
-        break
-      case 'bus_stop':
-        f.properties.highway = f.properties.fclass
-        break
-      default:
-        throw new Error(`osm_planet_transport_areas: ${f.properties.fclass}`)
-    }
+    f.properties.highway = f.properties.fclass
     delete f.properties['fclass']
     return f
   },
@@ -486,6 +460,7 @@ const lut = {
       case 'airfield':
       case 'helipad':
       case 'aeroway':
+      case 'apron':
         f.properties.aeroway = f.properties.fclass
         break
       case 'station':
@@ -499,6 +474,9 @@ const lut = {
       case 'bus_stop':
         f.properties.highway = f.properties.fclass
         break
+      case 'pier':
+        f.properties.landuse = f.properties.fclass
+        break
       default:
         throw new Error(`osm_planet_transport_areas: ${f.properties.fclass}`)
     }
@@ -508,8 +486,8 @@ const lut = {
   // 8. building
   osm_planet_landuse_urban: f => {
     f.tippecanoe = {
-      layer: 'area_building',
-      minzoom: 12,
+      layer: 'lu_urban',
+      minzoom: 10,
       maxzoom: 15
     }
     f.properties.landuse = f.properties.fclass
