@@ -520,7 +520,7 @@ const lut = {
       case 'fort':
       case 'archaeological_site':
       case 'ruins':
-      case 'cemetry':
+      case 'cemetery':
         f.properties.historic = f.properties.fclass
         break
       default:
