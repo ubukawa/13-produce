@@ -633,6 +633,11 @@ const lut = {
       case 'cafe':
       case 'food_court':
       case 'biergarten':
+      case 'dentist':
+      case 'doctor':
+      case 'clinic':
+      case 'veterinary':
+      case 'kindergarten':
       case 'nightclub':
       case 'pub':
       case 'bar':
@@ -675,6 +680,7 @@ const lut = {
       case 'bus_station':
       case 'ferry_terminal':
       case 'parking':
+      case 'harbour':
         f.properties.amenity = f.properties.fclass
         break
       case 'aerodrome':
@@ -728,6 +734,7 @@ const lut = {
       case 'taoist':
       case 'shintoist':
       case 'sikh':
+      case 'place_of_worship':
         f.properties.religion = f.properties.fclass
         break
       default:
