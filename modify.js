@@ -872,7 +872,15 @@ const lut = {
     }
     return f 
 },
-  osm_planet_service_area_p: f => {
+  osm_planet_transport_area_p: f => {
+    f.tippecanoe = {
+      layer: 'transareap',
+      minzoom: 11,
+      maxzoom: 15
+    }
+    return f 
+},
+  osm_planet_services_area_p: f => {
     f.tippecanoe = {
       layer: 'serviceap',
       minzoom: 13,
@@ -880,7 +888,7 @@ const lut = {
     }
     return f 
 },
-  osm_planet_service_areas: f => {
+  osm_planet_services_areas: f => {
     f.tippecanoe = {
       layer: 'servicea',
       minzoom: 13,
