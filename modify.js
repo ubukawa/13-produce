@@ -110,7 +110,7 @@ const minzoomWater = (f) => {
 
 const osmPoi = (f) => {
   f.tippecanoe = {
-    layer: 'place',
+    layer: 'poi',
     minzoom: flap(f, 14),
     maxzoom: 15
   }
@@ -274,7 +274,7 @@ const lut = {
   osm_planet_waterways_large: f => {
     f.tippecanoe = {
       layer: 'water',
-      minzoom: 10,
+      minzoom: 11,
       maxzoom: 15
     }
     f.properties.waterway = f.properties.fclass
@@ -811,7 +811,6 @@ const lut = {
       minzoom: 15,
       maxzoom: 15
     }
-    f.properties._source = 'osm_planet_heritage_area_p'
     return f 
 },
   osm_planet_landuse_park_reserve: f => {
@@ -850,16 +849,8 @@ const lut = {
 },
   osm_planet_places_areas: f => {
     f.tippecanoe = {
-      layer: 'areaa',
+      layer: 'place_a',
       minzoom: 10,
-      maxzoom: 15
-    }
-    return f 
-},
-  osm_planet_pois_services: f => {
-    f.tippecanoe = {
-      layer: 'service',
-      minzoom: 13,
       maxzoom: 15
     }
     return f 
