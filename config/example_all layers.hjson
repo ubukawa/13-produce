@@ -39,6 +39,7 @@
     un_base::unhq_popp
     osm_base::osm_planet_worship_area_p
     osm_base::osm_planet_barrier_lines
+    osm_base::osm_planet_buildings
     osm_base::osm_planet_ferries
     osm_base::osm_planet_heritage_area_p
     osm_base::osm_planet_highway_areas
