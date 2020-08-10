@@ -434,7 +434,7 @@ const lut = {
   },
   osm_planet_highway_areas: f => {
     f.tippecanoe = {
-      layer: 'structure',
+      layer: 'highway_area',
       minzoom: flap(f, 10),
       maxzoom: 15
     }
@@ -444,7 +444,7 @@ const lut = {
   },
   osm_planet_transport_areas: f => {
     f.tippecanoe = {
-      layer: 'structure',
+      layer: 'trans_area',
       minzoom: flap(f, 10),
       maxzoom: 15
     }
@@ -491,6 +491,16 @@ const lut = {
       maxzoom: 15
     }
     f.properties.landuse = f.properties.fclass
+    delete f.properties['fclass']
+    return f
+  },
+  osm_planet_buildings: f => {
+    f.tippecanoe = {
+      layer: 'building',
+      minzoom: 12,
+      maxzoom: 15
+    }
+    f.properties.building = f.properties.fclass
     delete f.properties['fclass']
     return f
   },
