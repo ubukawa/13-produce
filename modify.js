@@ -645,6 +645,7 @@ const lut = {
       case 'biergarten':
       case 'dentist':
       case 'doctor':
+      case 'doctors':
       case 'clinic':
       case 'veterinary':
       case 'kindergarten':
