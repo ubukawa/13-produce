@@ -424,7 +424,7 @@ const lut = {
   // 7. structure
   osm_planet_runways: f => {
     f.tippecanoe = {
-      layer: 'structure',
+      layer: 'runway',
       minzoom: 11,
       maxzoom: 15
     }
