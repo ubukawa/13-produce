@@ -413,7 +413,7 @@ const lut = {
   // 6. route
   osm_planet_ferries: f => {
     f.tippecanoe = {
-      layer: 'ferries',
+      layer: 'ferry',
       minzoom: 6,
       maxzoom: 15
     }
@@ -506,7 +506,7 @@ const lut = {
   },
   osm_planet_other_buildings: f => {
     f.tippecanoe = {
-      layer: 'area_building_o',
+      layer: 'building_o',
       minzoom: 12,
       maxzoom: 15
     }
@@ -891,7 +891,7 @@ const lut = {
 },
   osm_planet_services_areas: f => {
     f.tippecanoe = {
-      layer: 'servicea',
+      layer: 'service_a',
       minzoom: 13,
       maxzoom: 15
     }
