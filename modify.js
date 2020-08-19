@@ -137,7 +137,7 @@ const lut = {
   },
   osm_planet_landuse_natural_large: f => {
     f.tippecanoe = {
-      layer: 'nature',
+      layer: 'nature-l',
       minzoom: flap(f, 15),
       maxzoom: 15
     }
@@ -173,7 +173,7 @@ const lut = {
   },
   osm_planet_landuse_natural_medium: f => {
     f.tippecanoe = {
-      layer: 'nature',
+      layer: 'nature-m',
 //      minzoom: 8,
       minzoom: flap(f, 15),
       maxzoom: 15
